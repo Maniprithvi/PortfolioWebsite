@@ -10,11 +10,12 @@ interface Props{
 }
 
 const ProjectCard = ({src,title,description,href}:Props) => {
+  
    const handleLinkClick = (href:string) => {
     window.open(href, '_blank');
   };
   return (
-    <Link  href={href} passHref>
+    <Link  href={href} >
     <div  className='h-[75%] w-[500px] relative overflow-hidden rounded-md shadow-lg border border-[#2A0E61]'>
       <Image 
       src={src}

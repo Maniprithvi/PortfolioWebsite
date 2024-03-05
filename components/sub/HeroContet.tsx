@@ -5,9 +5,16 @@ import {motion} from 'framer-motion'
 import { slideInFromTop,slideInFromRight,slideInFromLeft } from '@/utils/motion'
 import { SparklesIcon } from "@heroicons/react/24/solid";
 import Image from 'next/image'
+import useDownloader from 'react-use-downloader';
 
 
 const HeroContet = () => {
+  const { size, elapsed, percentage, download, 
+    cancel, error, isInProgress } = 
+useDownloader(); 
+const fileUrl="/images/mani.docx"
+// const fileUrl='https://docs.google.com/document/d/1sGZ-lx-jDRARdamUAeHGAfZGgfzzijLGJ0IwMl2jk48/edit?usp=drive_link'
+const filename="ManiResume"
 
   return (
 <motion.div  initial='hidden'
@@ -46,12 +53,12 @@ className='flex flex-row items-center justify-center px-20 mt-40 w-full z-[20]'
       Here, I showcase my work and my passion for web development. Let&apos;s shape digital solutions together and pave the way for the future!
       </motion.p> 
       {/* get my resume */}
-       <motion.a
+       <motion.button
        variants={slideInFromLeft(1.3)}
-       href='https://docs.google.com/document/d/1sGZ-lx-jDRARdamUAeHGAfZGgfzzijLGJ0IwMl2jk48/edit?usp=drive_link'
-       download="ManikandanResume.pdf"
+       
+       onClick={() => download(fileUrl, filename)}
        className='py-2 button-primary text-center text-white cursor-pointer rounded-lg max-w-[200px]'
-       >get my resume !</motion.a>
+       >get my resume !</motion.button>
 
      
 </div>
